@@ -5,6 +5,7 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 "$ROOT_DIR/tests/test_scientific_diagram_skill.sh"
 "$ROOT_DIR/tests/test_scientific_diagram_examples.sh"
+"$ROOT_DIR/tests/test_repository_contract.sh"
 
 if grep -RInE "seamless|game-changing|行业领先|赋能|一站式" "$ROOT_DIR/README.md" "$ROOT_DIR/README.zh-CN.md" "$ROOT_DIR/docs" "$ROOT_DIR/skills"; then
   echo "hype wording found" >&2

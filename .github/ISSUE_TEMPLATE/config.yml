@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Privacy or provenance concern
+    url: https://github.com/Kkkakania/scientific-diagram-skill/security/policy
+    about: Do not paste private content into a public issue.

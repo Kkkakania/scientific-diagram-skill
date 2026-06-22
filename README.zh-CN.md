@@ -58,6 +58,11 @@ python3 scripts/check_diagram_examples.py
 
 检查脚本会解析 `.drawio` XML 和 SVG，确认关键标签存在，同时扫描邮箱、本地路径、平台痕迹、来源风险词和常见个人信息关键词。
 
+## 贡献和安全边界
+
+提交 PR 前看 [CONTRIBUTING.md](CONTRIBUTING.md)。如果发现隐私或来源风险，看
+[SECURITY.md](SECURITY.md)。不要把私人示意图、截图、本地路径、邮箱或照着论文图重画的内容贴到公开 issue。
+
 ## 和其他绘图仓库的关系
 
 这个仓库是科研绘图工作流里的 diagram 层：

@@ -70,6 +70,13 @@ The checker parses the `.drawio` XML and SVG preview, verifies expected labels,
 and scans for private paths, email addresses, source-platform traces, and common
 personal-data keywords.
 
+## Contributing and safety
+
+Use [CONTRIBUTING.md](CONTRIBUTING.md) for pull requests and
+[SECURITY.md](SECURITY.md) for privacy or provenance concerns. Do not paste
+private diagrams, screenshots, local paths, or copied paper figures into public
+issues.
+
 ## Relationship to the plotting repos
 
 This repository is part of the same public research-figure workflow:
