@@ -23,6 +23,7 @@ require_text() {
 require_file "CONTRIBUTING.md"
 require_file "SECURITY.md"
 require_file ".github/pull_request_template.md"
+require_file ".github/workflows/issue-triage.yml"
 require_file ".github/ISSUE_TEMPLATE/diagram_feedback.md"
 require_file ".github/ISSUE_TEMPLATE/config.yml"
 
@@ -35,6 +36,9 @@ require_text "README.zh-CN.md" "actions/workflows/quality.yml/badge.svg"
 require_text "CONTRIBUTING.md" "Do not attach private diagrams"
 require_text "SECURITY.md" "do not open a"
 require_text ".github/pull_request_template.md" "Provenance"
+require_text ".github/workflows/issue-triage.yml" "scientific-diagram-skill-triage"
+require_text ".github/workflows/issue-triage.yml" "private diagrams"
+require_text ".github/workflows/issue-triage.yml" "not a claim about adoption"
 require_text ".github/ISSUE_TEMPLATE/diagram_feedback.md" "No private diagrams"
 
 echo "Repository contract checks passed."

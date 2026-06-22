@@ -1,0 +1,44 @@
+name: Issue triage checklist
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  checklist:
+    if: ${{ !github.event.issue.pull_request }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add maintainer triage checklist
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+          TRIAGE_MARKER: "<!-- scientific-diagram-skill-triage -->"
+        run: |
+          set -euo pipefail
+
+          if gh issue view "$ISSUE_URL" --comments --json comments --jq '.comments[].body' | grep -Fq "$TRIAGE_MARKER"; then
+            echo "Triage checklist already exists."
+            exit 0
+          fi
+
+          cat > /tmp/triage-comment.md <<'COMMENT'
+          <!-- scientific-diagram-skill-triage -->
+          Thanks for opening this. I use this checklist to keep diagram requests reproducible and safe for a public repository.
+
+          Maintainer triage:
+
+          - [ ] Classify the request: `diagram-pattern`, `drawio`, `mermaid`, `docs`, or `skill-install`.
+          - [ ] Ask for a synthetic example if the report depends on private diagrams, unpublished data, or local paths.
+          - [ ] Link the affected `.drawio`, `.svg`, workflow run, documentation page, or skill file.
+          - [ ] Check whether the diagram can be verified by `./scripts/check_static_quality.sh`.
+          - [ ] Decide the next state: `Triaged`, `Awaiting feedback`, `Accepted`, or `Out of scope`.
+
+          This checklist is lightweight maintenance workflow evidence, not a claim about adoption or eligibility for any external benefit program.
+          COMMENT
+
+          gh issue comment "$ISSUE_URL" --body-file /tmp/triage-comment.md
