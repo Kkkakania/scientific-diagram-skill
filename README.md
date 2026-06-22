@@ -2,6 +2,9 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
+[![Quality](https://github.com/Kkkakania/scientific-diagram-skill/actions/workflows/quality.yml/badge.svg)](https://github.com/Kkkakania/scientific-diagram-skill/actions/workflows/quality.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 `scientific-diagram-skill` is a small Codex skill for research diagrams. It
 helps an agent draft Mermaid diagrams first, then move to editable draw.io /
 diagrams.net files when the diagram needs layout control or a reusable source
