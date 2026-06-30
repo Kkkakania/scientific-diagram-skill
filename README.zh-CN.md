@@ -38,6 +38,8 @@ Turn this system description into Mermaid first, then create an editable draw.io
 ```
 
 项目内安装方式和检查命令见 [`docs/install-targets.md`](docs/install-targets.md)。
+第一次使用后的反馈，先看 [`docs/first-use-feedback.md`](docs/first-use-feedback.md)，
+再把精简后的公开信息发到反馈 issue。
 
 ## 仓库里有什么
 

@@ -47,6 +47,8 @@ Turn this system description into Mermaid first, then create an editable draw.io
 
 See [`docs/install-targets.md`](docs/install-targets.md) for project-local
 installation and verification commands.
+For first-use reports, use [`docs/first-use-feedback.md`](docs/first-use-feedback.md)
+before posting to the feedback issue.
 
 ## What the skill contains
 
