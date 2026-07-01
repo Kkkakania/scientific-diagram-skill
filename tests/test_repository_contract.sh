@@ -36,7 +36,13 @@ require_text "README.zh-CN.md" "CONTRIBUTING.md"
 require_text "README.zh-CN.md" "SECURITY.md"
 require_text "README.zh-CN.md" "docs/first-use-feedback.md"
 require_text "README.zh-CN.md" "actions/workflows/quality.yml/badge.svg"
-require_text "docs/first-use-feedback.md" "scientific-diagram-skill#1"
+require_text "README.md" "issues/new?template=diagram_feedback.md"
+require_text "README.zh-CN.md" "issues/new?template=diagram_feedback.md"
+require_text "docs/first-use-feedback.md" "issues/new?template=diagram_feedback.md"
+if grep -Fq "scientific-diagram-skill/issues/1" "$ROOT_DIR/README.md" "$ROOT_DIR/README.zh-CN.md" "$ROOT_DIR/docs/first-use-feedback.md"; then
+  echo "stale feedback hub issue link remains" >&2
+  exit 1
+fi
 require_text "docs/first-use-feedback.md" "What Not To Include"
 require_text "docs/first-use-feedback.md" "redacted description"
 require_text "CONTRIBUTING.md" "Do not attach private diagrams"

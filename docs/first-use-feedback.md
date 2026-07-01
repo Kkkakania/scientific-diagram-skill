@@ -38,6 +38,6 @@ Verification run:
 Public-source boundary:
 ```
 
-For public issue feedback, use
-[`scientific-diagram-skill#1`](https://github.com/Kkkakania/scientific-diagram-skill/issues/1).
+For public issue feedback, use the
+[diagram feedback form](https://github.com/Kkkakania/scientific-diagram-skill/issues/new?template=diagram_feedback.md).
 Keep the report short; a redacted description is enough.
