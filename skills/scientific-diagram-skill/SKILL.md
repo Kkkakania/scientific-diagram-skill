@@ -34,8 +34,9 @@ revise a `.drawio` file for draw.io / diagrams.net.
 Use `assets/examples/research-method-flow.drawio` as the smallest editable
 example of the intended file shape. It has a matching
 `assets/examples/research-method-flow.svg` preview and
-`assets/examples/provenance.md` note. The example is clean-room and uses
-synthetic workflow labels.
+`assets/examples/provenance.md` note. `assets/examples/manifest.json` lists the
+same bundled example for repository checks and automation. The example is
+clean-room and uses synthetic workflow labels.
 
 Repository maintainers can run:
 

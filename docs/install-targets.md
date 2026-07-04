@@ -26,4 +26,4 @@ python3 scripts/check_diagram_examples.py
 ```
 
 These checks validate the example `.drawio` source, SVG preview, provenance
-note, skill metadata, and README references.
+note, example manifest, skill metadata, and README references.
