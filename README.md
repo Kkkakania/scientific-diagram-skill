@@ -61,6 +61,8 @@ then open the
 - `assets/examples/research-method-flow.drawio`: editable example source.
 - `assets/examples/research-method-flow.svg`: matching preview.
 - `assets/examples/provenance.md`: note explaining how the example was made.
+- `assets/examples/manifest.json`: machine-readable inventory for bundled
+  examples.
 
 ## Check the example
 

@@ -51,6 +51,7 @@ Turn this system description into Mermaid first, then create an editable draw.io
 - `assets/examples/research-method-flow.drawio`：一个可编辑示例。
 - `assets/examples/research-method-flow.svg`：对应的 SVG 预览。
 - `assets/examples/provenance.md`：说明示例如何生成、是否使用私人材料。
+- `assets/examples/manifest.json`：示例清单，方便脚本检查和后续自动化读取。
 
 ## 检查示例
 
