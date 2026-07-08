@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import os
 import pathlib
 import re
 import sys
@@ -9,7 +10,8 @@ import xml.etree.ElementTree as ET
 
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-EXAMPLE_DIR = ROOT / "skills" / "scientific-diagram-skill" / "assets" / "examples"
+DEFAULT_EXAMPLE_DIR = ROOT / "skills" / "scientific-diagram-skill" / "assets" / "examples"
+EXAMPLE_DIR = pathlib.Path(os.environ.get("DIAGRAM_EXAMPLE_DIR", DEFAULT_EXAMPLE_DIR))
 DRAWIO = EXAMPLE_DIR / "research-method-flow.drawio"
 SVG = EXAMPLE_DIR / "research-method-flow.svg"
 PROVENANCE = EXAMPLE_DIR / "provenance.md"
@@ -162,9 +164,12 @@ def check_manifest() -> None:
     example = examples[0]
     required = {
         "id": "research-method-flow",
+        "title": "Research method flow",
+        "diagramType": "method-flow",
         "drawio": "research-method-flow.drawio",
         "svg": "research-method-flow.svg",
         "provenance": "provenance.md",
+        "privateData": False,
     }
     for key, expected in required.items():
         if example.get(key) != expected:
