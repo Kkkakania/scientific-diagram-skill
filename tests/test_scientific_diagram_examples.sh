@@ -30,6 +30,7 @@ if [[ ! -s "$EXAMPLE_DIR/manifest.json" ]]; then
 fi
 
 python3 "$ROOT_DIR/scripts/check_diagram_examples.py"
+python3 "$ROOT_DIR/tests/test_diagram_svg_contract.py"
 
 grep -q "research-method-flow.drawio" "$ROOT_DIR/skills/scientific-diagram-skill/SKILL.md"
 grep -q "research-method-flow.svg" "$ROOT_DIR/skills/scientific-diagram-skill/SKILL.md"

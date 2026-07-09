@@ -123,9 +123,10 @@ def check_svg() -> None:
         fail("SVG root must be svg")
     if "Research method flow" not in text:
         fail("SVG preview should include a descriptive title")
+    lower_text = text.lower()
     blocked = ["<script", "href=\"http://", "href=\"https://", "xlink:href=\"http://", "xlink:href=\"https://", "data:"]
     for marker in blocked:
-        if marker in text:
+        if marker in lower_text:
             fail(f"SVG preview contains blocked marker: {marker}")
 
 
