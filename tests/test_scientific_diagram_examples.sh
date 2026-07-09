@@ -30,6 +30,29 @@ if [[ ! -s "$EXAMPLE_DIR/manifest.json" ]]; then
 fi
 
 python3 "$ROOT_DIR/scripts/check_diagram_examples.py"
+python3 - "$ROOT_DIR" <<'PY'
+import importlib.util
+import io
+import pathlib
+import sys
+from contextlib import redirect_stderr
+
+root = pathlib.Path(sys.argv[1])
+script = root / "scripts" / "check_diagram_examples.py"
+spec = importlib.util.spec_from_file_location("check_diagram_examples", script)
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+
+malicious_svg = '<svg xmlns="http://www.w3.org/2000/svg" onload="alert(1)"><title>Research method flow</title></svg>'
+try:
+    with redirect_stderr(io.StringIO()):
+        module.check_svg_safety(root / "bad.svg", malicious_svg)
+except SystemExit as exc:
+    if exc.code != 1:
+        raise
+else:
+    raise AssertionError("expected active SVG content to fail")
+PY
 
 grep -q "research-method-flow.drawio" "$ROOT_DIR/skills/scientific-diagram-skill/SKILL.md"
 grep -q "research-method-flow.svg" "$ROOT_DIR/skills/scientific-diagram-skill/SKILL.md"
