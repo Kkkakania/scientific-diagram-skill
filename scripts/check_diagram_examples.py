@@ -169,6 +169,8 @@ def check_manifest() -> None:
     for key, expected in required.items():
         if example.get(key) != expected:
             fail(f"manifest example {key} must be {expected}")
+    if example.get("privateData") is not False:
+        fail("manifest example privateData must be false")
 
 
 def main() -> None:
