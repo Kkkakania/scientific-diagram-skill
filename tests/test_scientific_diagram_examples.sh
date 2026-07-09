@@ -72,6 +72,7 @@ if DIAGRAM_EXAMPLE_DIR="$TMP_DIR/examples" python3 "$ROOT_DIR/scripts/check_diag
   exit 1
 fi
 grep -q "privateData" "$TMP_DIR/bad-manifest.err"
+python3 "$ROOT_DIR/tests/test_diagram_private_patterns.py"
 
 grep -q "research-method-flow.drawio" "$ROOT_DIR/skills/scientific-diagram-skill/SKILL.md"
 grep -q "research-method-flow.svg" "$ROOT_DIR/skills/scientific-diagram-skill/SKILL.md"
