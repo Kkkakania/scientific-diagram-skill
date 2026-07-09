@@ -6,6 +6,7 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 "$ROOT_DIR/tests/test_scientific_diagram_skill.sh"
 "$ROOT_DIR/tests/test_scientific_diagram_examples.sh"
 "$ROOT_DIR/tests/test_repository_contract.sh"
+"$ROOT_DIR/tests/test_static_quality_scope.sh"
 
 QUALITY_SCAN_ROOTS=(
   "$ROOT_DIR/README.md"
