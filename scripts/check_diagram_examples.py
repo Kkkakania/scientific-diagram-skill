@@ -165,6 +165,7 @@ def check_manifest() -> None:
         "drawio": "research-method-flow.drawio",
         "svg": "research-method-flow.svg",
         "provenance": "provenance.md",
+        "privateData": False,
     }
     for key, expected in required.items():
         if example.get(key) != expected:
