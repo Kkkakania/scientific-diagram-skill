@@ -117,6 +117,10 @@ def check_drawio() -> None:
 def check_svg() -> None:
     text = read_text(SVG)
     check_no_private_markers(SVG, text)
+    check_svg_safety(SVG, text)
+
+
+def check_svg_safety(path: pathlib.Path, text: str) -> None:
     try:
         root = ET.fromstring(text)
     except ET.ParseError as exc:
@@ -126,9 +130,20 @@ def check_svg() -> None:
     if "Research method flow" not in text:
         fail("SVG preview should include a descriptive title")
     blocked = ["<script", "href=\"http://", "href=\"https://", "xlink:href=\"http://", "xlink:href=\"https://", "data:"]
+    lowered = text.lower()
     for marker in blocked:
-        if marker in text:
+        if marker in lowered:
             fail(f"SVG preview contains blocked marker: {marker}")
+    for element in root.iter():
+        if local_name(element.tag).lower() == "script":
+            fail("SVG preview contains blocked script element")
+        for name, value in element.attrib.items():
+            attr = local_name(name).lower()
+            attr_value = value.strip().lower()
+            if attr.startswith("on"):
+                fail(f"SVG preview contains blocked event handler: {attr}")
+            if attr in {"href", "src"} and attr_value.startswith(("http://", "https://", "data:")):
+                fail(f"SVG preview contains blocked external reference: {attr}")
 
 
 def check_provenance() -> None:
