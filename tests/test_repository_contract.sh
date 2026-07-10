@@ -52,5 +52,9 @@ require_text ".github/workflows/issue-triage.yml" "scientific-diagram-skill-tria
 require_text ".github/workflows/issue-triage.yml" "private diagrams"
 require_text ".github/workflows/issue-triage.yml" "not a claim about adoption"
 require_text ".github/ISSUE_TEMPLATE/diagram_feedback.md" "No private diagrams"
+require_text "scripts/check_static_quality.sh" "/[Mm]nt/[A-Za-z]/"
+require_text "scripts/check_static_quality.sh" "%USERPROFILE%"
+require_text "scripts/check_static_quality.sh" "/workspaces/"
+require_text "scripts/check_static_quality.sh" "/Volumes/"
 
 echo "Repository contract checks passed."
