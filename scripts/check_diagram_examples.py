@@ -45,7 +45,7 @@ PRIVATE_PATTERNS = [
     re.compile(re.escape(UNIX_USER_ROOT) + r"[^\s<]+"),
     re.compile(re.escape(WINDOWS_USER_ROOT) + r"[^\s<]+"),
     re.compile(re.escape(UNIX_HOME_ROOT) + r"[^\s<]+"),
-    re.compile("(" + "|".join(re.escape(marker) for marker in SOURCE_MARKERS) + ")"),
+    re.compile("(" + "|".join(re.escape(marker) for marker in SOURCE_MARKERS) + ")", re.IGNORECASE),
     re.compile("(" + "|".join(re.escape(marker) for marker in SENSITIVE_MARKERS) + ")"),
 ]
 
