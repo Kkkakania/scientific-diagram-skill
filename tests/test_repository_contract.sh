@@ -68,5 +68,7 @@ require_text "scripts/check_static_quality.sh" "QUALITY_SCAN_ROOTS=("
 require_text "scripts/check_static_quality.sh" '"$ROOT_DIR/.github"'
 require_text "scripts/check_static_quality.sh" '"$ROOT_DIR/CONTRIBUTING.md"'
 require_text "scripts/check_static_quality.sh" '"$ROOT_DIR/SECURITY.md"'
+require_text ".github/ISSUE_TEMPLATE/diagram_feedback.md" "I removed private diagrams, screenshots, local paths, emails, and copied paper figures."
+require_text ".github/ISSUE_TEMPLATE/diagram_feedback.md" "I used synthetic labels or a redacted description for any non-public source material."
 
 echo "Repository contract checks passed."

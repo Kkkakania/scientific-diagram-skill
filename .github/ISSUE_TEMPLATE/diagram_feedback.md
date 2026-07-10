@@ -21,3 +21,6 @@ Where did the workflow slow down or fail?
 
 No private diagrams, screenshots, local paths, emails, or copied paper figures
 should be pasted here. Describe the structure with synthetic labels if needed.
+
+- [ ] I removed private diagrams, screenshots, local paths, emails, and copied paper figures.
+- [ ] I used synthetic labels or a redacted description for any non-public source material.
