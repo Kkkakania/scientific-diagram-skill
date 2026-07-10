@@ -64,5 +64,9 @@ require_text ".github/workflows/quality.yml" "contents: read"
 require_text ".github/workflows/quality.yml" "FORCE_JAVASCRIPT_ACTIONS_TO_NODE24"
 require_text ".github/workflows/quality.yml" "actions/checkout@v6"
 require_text ".github/workflows/quality.yml" "actions/setup-python@v6"
+require_text "scripts/check_static_quality.sh" "QUALITY_SCAN_ROOTS=("
+require_text "scripts/check_static_quality.sh" '"$ROOT_DIR/.github"'
+require_text "scripts/check_static_quality.sh" '"$ROOT_DIR/CONTRIBUTING.md"'
+require_text "scripts/check_static_quality.sh" '"$ROOT_DIR/SECURITY.md"'
 
 echo "Repository contract checks passed."
