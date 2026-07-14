@@ -80,7 +80,8 @@ personal-data keywords.
 
 ## Contributing and safety
 
-Use [CONTRIBUTING.md](CONTRIBUTING.md) for pull requests and
+Use [CONTRIBUTING.md](CONTRIBUTING.md) for pull requests,
+[CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for community expectations, and
 [SECURITY.md](SECURITY.md) for privacy or provenance concerns. Do not paste
 private diagrams, screenshots, local paths, or copied paper figures into public
 issues.
