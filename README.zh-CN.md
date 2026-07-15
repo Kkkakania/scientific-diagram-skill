@@ -67,7 +67,8 @@ python3 scripts/check_diagram_examples.py
 
 ## 贡献和安全边界
 
-提交 PR 前看 [CONTRIBUTING.md](CONTRIBUTING.md)。如果发现隐私或来源风险，看
+提交 PR 前看 [CONTRIBUTING.md](CONTRIBUTING.md)，社区交流边界见
+[CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)。如果发现隐私或来源风险，看
 [SECURITY.md](SECURITY.md)。不要把私人示意图、截图、本地路径、邮箱或照着论文图重画的内容贴到公开 issue。
 
 ## 和其他绘图仓库的关系
