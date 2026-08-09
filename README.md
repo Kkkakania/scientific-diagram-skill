@@ -77,6 +77,9 @@ python3 scripts/check_diagram_examples.py
 ./tests/test_scientific_diagram_examples.sh
 ```
 
+Use `python3 scripts/check_diagram_examples.py --format json` when CI needs a
+stable machine-readable success payload.
+
 The checker parses the `.drawio` XML and SVG preview, verifies expected labels,
 and scans for private paths, email addresses, source-platform traces, and common
 personal-data keywords.

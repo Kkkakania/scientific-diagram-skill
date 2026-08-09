@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import argparse
 import json
 import os
 import pathlib
@@ -202,12 +203,18 @@ def check_manifest() -> None:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description="Validate bundled Draw.io and SVG examples.")
+    parser.add_argument("--format", choices=("text", "json"), default="text")
+    args = parser.parse_args()
     for example_id, contract in EXAMPLE_CONTRACTS.items():
         check_drawio(EXAMPLE_DIR / f"{example_id}.drawio", contract["labels"])
         check_svg(EXAMPLE_DIR / f"{example_id}.svg", contract["title"])
     check_provenance()
     check_manifest()
-    print("Diagram examples check passed.")
+    if args.format == "json":
+        print(json.dumps({"exampleCount": len(EXAMPLE_CONTRACTS), "schemaVersion": 1, "status": "passed"}, sort_keys=True))
+    else:
+        print("Diagram examples check passed.")
 
 
 if __name__ == "__main__":
