@@ -45,7 +45,10 @@ require_text "README.zh-CN.md" "运行时的 skills 目录"
 require_text "docs/install-targets.md" ".codex/skills/scientific-diagram-skill"
 require_text "docs/install-targets.md" ".claude/skills/scientific-diagram-skill"
 require_text "docs/install-targets.md" ".agents/skills/scientific-diagram-skill"
-require_text "docs/install-targets.md" "does not edit runtime configuration"
+if ! tr '\n' ' ' <"$ROOT_DIR/docs/install-targets.md" | grep -Fq "does not edit runtime configuration"; then
+  echo "missing normalized install side-effect boundary" >&2
+  exit 1
+fi
 require_text "README.md" "issues/new?template=diagram_feedback.md"
 require_text "README.zh-CN.md" "issues/new?template=diagram_feedback.md"
 require_text "docs/first-use-feedback.md" "issues/new?template=diagram_feedback.md"
