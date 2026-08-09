@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="330" viewBox="0 0 1100 330" role="img" aria-labelledby="title desc">
+  <title id="title">Reproducible figure system</title>
+  <desc id="desc">A five-stage system from synthetic data through code, figure outputs, quality checks, and public release.</desc>
+  <rect width="1100" height="330" fill="#ffffff"/>
+  <text x="50" y="58" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#17212b">Reproducible figure system</text>
+  <text x="50" y="88" font-family="Arial, sans-serif" font-size="14" fill="#536273">Editable blocks keep data, rendering, validation, and publication boundaries explicit.</text>
+  <g font-family="Arial, sans-serif" font-size="16" text-anchor="middle">
+    <rect x="50" y="150" width="150" height="68" fill="#e8f1fb" stroke="#2455a4" stroke-width="2"/><text x="125" y="190" fill="#183153">Synthetic data</text>
+    <rect x="260" y="150" width="160" height="68" fill="#e7f4ec" stroke="#2f8f5b" stroke-width="2"/><text x="340" y="190" fill="#173a27">MATLAB or Python</text>
+    <rect x="480" y="150" width="150" height="68" fill="#fff3df" stroke="#b45f06" stroke-width="2"/><text x="555" y="190" fill="#5a3305">Figure outputs</text>
+    <rect x="690" y="150" width="150" height="68" fill="#f6e9ef" stroke="#8b1e3f" stroke-width="2"/><text x="765" y="190" fill="#4d1024">Quality gate</text>
+    <rect x="900" y="150" width="150" height="68" fill="#eef0f3" stroke="#536273" stroke-width="2"/><text x="975" y="190" fill="#26313d">Public release</text>
+  </g>
+  <g fill="none" stroke="#536273" stroke-width="2"><path d="M200 184 H248"/><path d="M420 184 H468"/><path d="M630 184 H678"/><path d="M840 184 H888"/></g>
+  <g fill="#536273"><path d="M248 184 l-10 -6 v12z"/><path d="M468 184 l-10 -6 v12z"/><path d="M678 184 l-10 -6 v12z"/><path d="M888 184 l-10 -6 v12z"/></g>
+</svg>

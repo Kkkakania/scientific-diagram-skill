@@ -12,10 +12,21 @@ import xml.etree.ElementTree as ET
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 DEFAULT_EXAMPLE_DIR = ROOT / "skills" / "scientific-diagram-skill" / "assets" / "examples"
 EXAMPLE_DIR = pathlib.Path(os.environ.get("DIAGRAM_EXAMPLE_DIR", DEFAULT_EXAMPLE_DIR))
-DRAWIO = EXAMPLE_DIR / "research-method-flow.drawio"
-SVG = EXAMPLE_DIR / "research-method-flow.svg"
 PROVENANCE = EXAMPLE_DIR / "provenance.md"
 MANIFEST = EXAMPLE_DIR / "manifest.json"
+
+EXAMPLE_CONTRACTS = {
+    "research-method-flow": {
+        "title": "Research method flow",
+        "diagramType": "method-flow",
+        "labels": ["Input data", "Inspect schema", "MATLAB figure", "mfigci check", "README or gallery"],
+    },
+    "reproducible-figure-system": {
+        "title": "Reproducible figure system",
+        "diagramType": "system-block",
+        "labels": ["Synthetic data", "MATLAB or Python", "Figure outputs", "Quality gate", "Public release"],
+    },
+}
 
 UNIX_USER_ROOT = "/" + "Users" + "/"
 UNIX_HOME_ROOT = "/" + "ho" + "me" + "/"
@@ -71,9 +82,9 @@ def local_name(tag: str) -> str:
     return tag.rsplit("}", 1)[-1]
 
 
-def check_drawio() -> None:
-    text = read_text(DRAWIO)
-    check_no_private_markers(DRAWIO, text)
+def check_drawio(path: pathlib.Path, required_labels: list[str]) -> None:
+    text = read_text(path)
+    check_no_private_markers(path, text)
     try:
         root = ET.fromstring(text)
     except ET.ParseError as exc:
@@ -102,32 +113,25 @@ def check_drawio() -> None:
         fail("drawio example should have at least four edge cells")
 
     labels = " ".join(cell.attrib.get("value", "") for cell in vertices)
-    required_labels = [
-        "Input data",
-        "Inspect schema",
-        "MATLAB figure",
-        "mfigci check",
-        "README or gallery",
-    ]
     missing = [label for label in required_labels if label not in labels]
     if missing:
         fail("drawio example missing labels: " + ", ".join(missing))
 
 
-def check_svg() -> None:
-    text = read_text(SVG)
-    check_no_private_markers(SVG, text)
-    check_svg_safety(SVG, text)
+def check_svg(path: pathlib.Path, title: str) -> None:
+    text = read_text(path)
+    check_no_private_markers(path, text)
+    check_svg_safety(path, text, title)
 
 
-def check_svg_safety(path: pathlib.Path, text: str) -> None:
+def check_svg_safety(path: pathlib.Path, text: str, title: str = "Research method flow") -> None:
     try:
         root = ET.fromstring(text)
     except ET.ParseError as exc:
         fail(f"SVG is not parseable: {exc}")
     if local_name(root.tag) != "svg":
         fail("SVG root must be svg")
-    if "Research method flow" not in text:
+    if title not in text:
         fail("SVG preview should include a descriptive title")
     blocked = ["<script", "href=\"http://", "href=\"https://", "xlink:href=\"http://", "xlink:href=\"https://", "data:"]
     lowered = text.lower()
@@ -155,6 +159,8 @@ def check_provenance() -> None:
         "Private data: none",
         "research-method-flow.drawio",
         "research-method-flow.svg",
+        "reproducible-figure-system.drawio",
+        "reproducible-figure-system.svg",
     ]
     missing = [marker for marker in required if marker not in text]
     if missing:
@@ -171,29 +177,34 @@ def check_manifest() -> None:
 
     if manifest.get("schemaVersion") != 1:
         fail("manifest schemaVersion must be 1")
-    if manifest.get("exampleCount") != 1:
-        fail("manifest exampleCount must be 1")
+    if manifest.get("exampleCount") != len(EXAMPLE_CONTRACTS):
+        fail(f"manifest exampleCount must be {len(EXAMPLE_CONTRACTS)}")
     examples = manifest.get("examples")
-    if not isinstance(examples, list) or len(examples) != 1:
-        fail("manifest must list exactly one bundled example")
-    example = examples[0]
-    required = {
-        "id": "research-method-flow",
-        "title": "Research method flow",
-        "diagramType": "method-flow",
-        "drawio": "research-method-flow.drawio",
-        "svg": "research-method-flow.svg",
-        "provenance": "provenance.md",
-        "privateData": False,
-    }
-    for key, expected in required.items():
-        if example.get(key) != expected:
-            fail(f"manifest example {key} must be {expected}")
+    if not isinstance(examples, list) or len(examples) != len(EXAMPLE_CONTRACTS):
+        fail(f"manifest must list exactly {len(EXAMPLE_CONTRACTS)} bundled examples")
+    by_id = {example.get("id"): example for example in examples}
+    if set(by_id) != set(EXAMPLE_CONTRACTS):
+        fail("manifest example ids do not match the bundled examples")
+    for example_id, contract in EXAMPLE_CONTRACTS.items():
+        example = by_id[example_id]
+        required = {
+            "id": example_id,
+            "title": contract["title"],
+            "diagramType": contract["diagramType"],
+            "drawio": f"{example_id}.drawio",
+            "svg": f"{example_id}.svg",
+            "provenance": "provenance.md",
+            "privateData": False,
+        }
+        for key, expected in required.items():
+            if example.get(key) != expected:
+                fail(f"manifest example {example_id} {key} must be {expected}")
 
 
 def main() -> None:
-    check_drawio()
-    check_svg()
+    for example_id, contract in EXAMPLE_CONTRACTS.items():
+        check_drawio(EXAMPLE_DIR / f"{example_id}.drawio", contract["labels"])
+        check_svg(EXAMPLE_DIR / f"{example_id}.svg", contract["title"])
     check_provenance()
     check_manifest()
     print("Diagram examples check passed.")

@@ -19,6 +19,16 @@ if [[ ! -s "$EXAMPLE_DIR/research-method-flow.svg" ]]; then
   exit 1
 fi
 
+if [[ ! -s "$EXAMPLE_DIR/reproducible-figure-system.drawio" ]]; then
+  echo "missing reproducible figure system drawio example" >&2
+  exit 1
+fi
+
+if [[ ! -s "$EXAMPLE_DIR/reproducible-figure-system.svg" ]]; then
+  echo "missing reproducible figure system SVG preview" >&2
+  exit 1
+fi
+
 if [[ ! -s "$EXAMPLE_DIR/provenance.md" ]]; then
   echo "missing diagram example provenance note" >&2
   exit 1
@@ -64,7 +74,7 @@ import sys
 
 path = pathlib.Path(sys.argv[1])
 manifest = json.loads(path.read_text(encoding="utf-8"))
-manifest["examples"][0]["privateData"] = True
+manifest["examples"][1]["privateData"] = True
 path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
 PY
 if DIAGRAM_EXAMPLE_DIR="$TMP_DIR/examples" python3 "$ROOT_DIR/scripts/check_diagram_examples.py" 2>"$TMP_DIR/bad-manifest.err"; then
@@ -76,6 +86,8 @@ python3 "$ROOT_DIR/tests/test_diagram_private_patterns.py"
 
 grep -q "research-method-flow.drawio" "$ROOT_DIR/skills/scientific-diagram-skill/SKILL.md"
 grep -q "research-method-flow.svg" "$ROOT_DIR/skills/scientific-diagram-skill/SKILL.md"
+grep -q "reproducible-figure-system.drawio" "$ROOT_DIR/skills/scientific-diagram-skill/SKILL.md"
+grep -q "reproducible-figure-system.svg" "$ROOT_DIR/skills/scientific-diagram-skill/SKILL.md"
 grep -q "manifest.json" "$ROOT_DIR/skills/scientific-diagram-skill/SKILL.md"
 grep -q "check_diagram_examples.py" "$ROOT_DIR/README.md"
 grep -q "check_diagram_examples.py" "$ROOT_DIR/README.zh-CN.md"

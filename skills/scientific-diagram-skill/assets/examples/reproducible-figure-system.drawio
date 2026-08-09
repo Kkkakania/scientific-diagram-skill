@@ -1,0 +1,19 @@
+<mxfile host="app.diagrams.net" modified="2026-08-09T00:00:00.000Z" version="24.7.17">
+  <diagram id="reproducible-figure-system" name="Reproducible figure system">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="data" value="Synthetic data" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e8f1fb;strokeColor=#2455a4;fontColor=#183153;" vertex="1" parent="1"><mxGeometry x="50" y="180" width="150" height="64" as="geometry" /></mxCell>
+        <mxCell id="code" value="MATLAB or Python" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e7f4ec;strokeColor=#2f8f5b;fontColor=#173a27;" vertex="1" parent="1"><mxGeometry x="250" y="180" width="160" height="64" as="geometry" /></mxCell>
+        <mxCell id="figures" value="Figure outputs" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff3df;strokeColor=#b45f06;fontColor=#5a3305;" vertex="1" parent="1"><mxGeometry x="460" y="180" width="150" height="64" as="geometry" /></mxCell>
+        <mxCell id="quality" value="Quality gate" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f6e9ef;strokeColor=#8b1e3f;fontColor=#4d1024;" vertex="1" parent="1"><mxGeometry x="660" y="180" width="150" height="64" as="geometry" /></mxCell>
+        <mxCell id="release" value="Public release" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eef0f3;strokeColor=#536273;fontColor=#26313d;" vertex="1" parent="1"><mxGeometry x="860" y="180" width="150" height="64" as="geometry" /></mxCell>
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#536273;endArrow=block;endFill=1;" edge="1" parent="1" source="data" target="code"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#536273;endArrow=block;endFill=1;" edge="1" parent="1" source="code" target="figures"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#536273;endArrow=block;endFill=1;" edge="1" parent="1" source="figures" target="quality"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#536273;endArrow=block;endFill=1;" edge="1" parent="1" source="quality" target="release"><mxGeometry relative="1" as="geometry" /></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
