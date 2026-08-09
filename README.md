@@ -5,7 +5,7 @@
 [![Quality](https://github.com/Kkkakania/scientific-diagram-skill/actions/workflows/quality.yml/badge.svg)](https://github.com/Kkkakania/scientific-diagram-skill/actions/workflows/quality.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-`scientific-diagram-skill` is a small Codex skill for research diagrams. It
+`scientific-diagram-skill` is a small reusable skill for research diagrams. It
 helps an agent draft Mermaid diagrams first, then move to editable draw.io /
 diagrams.net files when the diagram needs layout control or a reusable source
 file.
@@ -30,14 +30,15 @@ provenance notes together so a maintainer can review what is public.
 
 ## Install
 
-Copy the skill folder into your Codex skill directory:
+Copy the skill folder into your runtime's skills directory. For example, a
+project-local install can use:
 
 ```bash
-mkdir -p ~/.codex/skills
-cp -R skills/scientific-diagram-skill ~/.codex/skills/
+mkdir -p .agents/skills
+cp -R skills/scientific-diagram-skill .agents/skills/scientific-diagram-skill
 ```
 
-Then ask Codex for tasks such as:
+Then request tasks such as:
 
 ```text
 Use scientific-diagram-skill to sketch this method pipeline.
@@ -45,8 +46,8 @@ Review this draw.io experiment diagram before I put it in a README.
 Turn this system description into Mermaid first, then create an editable draw.io source.
 ```
 
-See [`docs/install-targets.md`](docs/install-targets.md) for project-local
-installation and verification commands.
+See [`docs/install-targets.md`](docs/install-targets.md) for project-local,
+Codex, Claude Code, generic directory, and verification examples.
 For first-use reports, use [`docs/first-use-feedback.md`](docs/first-use-feedback.md),
 then open the
 [diagram feedback form](https://github.com/Kkkakania/scientific-diagram-skill/issues/new?template=diagram_feedback.md).
