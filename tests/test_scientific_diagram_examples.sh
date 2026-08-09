@@ -40,6 +40,19 @@ if [[ ! -s "$EXAMPLE_DIR/manifest.json" ]]; then
 fi
 
 python3 "$ROOT_DIR/scripts/check_diagram_examples.py"
+
+json_output="$(python3 "$ROOT_DIR/scripts/check_diagram_examples.py" --format json)"
+python3 - "$json_output" <<'PY'
+import json
+import sys
+
+payload = json.loads(sys.argv[1])
+assert payload == {
+    "exampleCount": 2,
+    "schemaVersion": 1,
+    "status": "passed",
+}
+PY
 python3 - "$ROOT_DIR" <<'PY'
 import importlib.util
 import io
