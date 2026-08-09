@@ -5,5 +5,7 @@
 - Private data: none.
 - Editable source: `research-method-flow.drawio`.
 - Preview export: `research-method-flow.svg`.
-- Intended use: a small example for agent-assisted research diagrams and MATLAB
+- Editable system example: `reproducible-figure-system.drawio`.
+- System preview: `reproducible-figure-system.svg`.
+- Intended use: small examples for research diagrams and MATLAB
   figure workflow documentation.

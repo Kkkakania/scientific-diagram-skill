@@ -61,6 +61,8 @@ then open the
 - `references/export-and-provenance.md`: public export and provenance rules.
 - `assets/examples/research-method-flow.drawio`: editable example source.
 - `assets/examples/research-method-flow.svg`: matching preview.
+- `assets/examples/reproducible-figure-system.drawio`: editable system-block example.
+- `assets/examples/reproducible-figure-system.svg`: matching system-block preview.
 - `assets/examples/provenance.md`: note explaining how the example was made.
 - `assets/examples/manifest.json`: machine-readable inventory for bundled
   examples.

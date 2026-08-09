@@ -35,8 +35,13 @@ Use `assets/examples/research-method-flow.drawio` as the smallest editable
 example of the intended file shape. It has a matching
 `assets/examples/research-method-flow.svg` preview and
 `assets/examples/provenance.md` note. `assets/examples/manifest.json` lists the
-same bundled example for repository checks and automation. The example is
+bundled examples for repository checks and automation. The first example is
 clean-room and uses synthetic workflow labels.
+
+Use `assets/examples/reproducible-figure-system.drawio` when a compact system
+block diagram is a better fit. Its matching
+`assets/examples/reproducible-figure-system.svg` preview keeps the same
+clean-room and public-release boundaries.
 
 Repository maintainers can run:
 
