@@ -5,7 +5,7 @@
 [![Quality](https://github.com/Kkkakania/scientific-diagram-skill/actions/workflows/quality.yml/badge.svg)](https://github.com/Kkkakania/scientific-diagram-skill/actions/workflows/quality.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-`scientific-diagram-skill` 是一个面向科研和工程示意图的 Codex skill。它适合让 agent 先用 Mermaid 草拟结构，再在需要可编辑源文件时转成 draw.io / diagrams.net 的 `.drawio` 文件。
+`scientific-diagram-skill` 是一个可复用的科研和工程示意图 skill。它适合先用 Mermaid 草拟结构，再在需要可编辑源文件时转成 draw.io / diagrams.net 的 `.drawio` 文件。
 
 它不负责画数据图。数据图更适合放在
 [`matlab-plotting-skill`](https://github.com/Kkkakania/matlab-plotting-skill)
@@ -22,11 +22,11 @@
 
 ## 安装
 
-把 skill 目录复制到 Codex 的 skill 目录：
+把 skill 目录复制到运行时的 skills 目录。例如，项目本地安装可以使用：
 
 ```bash
-mkdir -p ~/.codex/skills
-cp -R skills/scientific-diagram-skill ~/.codex/skills/
+mkdir -p .agents/skills
+cp -R skills/scientific-diagram-skill .agents/skills/scientific-diagram-skill
 ```
 
 然后可以这样使用：
@@ -37,7 +37,7 @@ Review this draw.io experiment diagram before I put it in a README.
 Turn this system description into Mermaid first, then create an editable draw.io source.
 ```
 
-项目内安装方式和检查命令见 [`docs/install-targets.md`](docs/install-targets.md)。
+项目内、Codex、Claude Code、通用目录的安装方式和检查命令见 [`docs/install-targets.md`](docs/install-targets.md)。
 第一次使用后的反馈，先看 [`docs/first-use-feedback.md`](docs/first-use-feedback.md)，
 再打开
 [diagram feedback 表单](https://github.com/Kkkakania/scientific-diagram-skill/issues/new?template=diagram_feedback.md)。
