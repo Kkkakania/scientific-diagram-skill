@@ -48,6 +48,26 @@ import sys
 
 payload = json.loads(sys.argv[1])
 assert payload == {
+    "examples": [
+        {
+            "diagramType": "method-flow",
+            "drawio": "research-method-flow.drawio",
+            "edgeCount": 6,
+            "id": "research-method-flow",
+            "svg": "research-method-flow.svg",
+            "title": "Research method flow",
+            "vertexCount": 10,
+        },
+        {
+            "diagramType": "system-block",
+            "drawio": "reproducible-figure-system.drawio",
+            "edgeCount": 4,
+            "id": "reproducible-figure-system",
+            "svg": "reproducible-figure-system.svg",
+            "title": "Reproducible figure system",
+            "vertexCount": 5,
+        },
+    ],
     "exampleCount": 2,
     "schemaVersion": 1,
     "status": "passed",
