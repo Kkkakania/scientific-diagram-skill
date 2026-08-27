@@ -66,7 +66,7 @@ python3 scripts/check_diagram_examples.py
 ```
 
 CI 需要稳定的机器可读成功结果时，运行
-`python3 scripts/check_diagram_examples.py --format json`。
+`python3 scripts/check_diagram_examples.py --format json`。结果会逐项列出示例 id、类型、源文件、预览文件，以及已验证的节点数和连线数。
 
 检查脚本会解析 `.drawio` XML 和 SVG，确认关键标签存在，同时扫描邮箱、本地路径、平台痕迹、来源风险词和常见个人信息关键词。
 

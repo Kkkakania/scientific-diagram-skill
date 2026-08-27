@@ -83,7 +83,7 @@ def local_name(tag: str) -> str:
     return tag.rsplit("}", 1)[-1]
 
 
-def check_drawio(path: pathlib.Path, required_labels: list[str]) -> None:
+def check_drawio(path: pathlib.Path, required_labels: list[str]) -> dict[str, int]:
     text = read_text(path)
     check_no_private_markers(path, text)
     try:
@@ -117,6 +117,7 @@ def check_drawio(path: pathlib.Path, required_labels: list[str]) -> None:
     missing = [label for label in required_labels if label not in labels]
     if missing:
         fail("drawio example missing labels: " + ", ".join(missing))
+    return {"vertexCount": len(vertices), "edgeCount": len(edges)}
 
 
 def check_svg(path: pathlib.Path, title: str) -> None:
@@ -206,13 +207,34 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Validate bundled Draw.io and SVG examples.")
     parser.add_argument("--format", choices=("text", "json"), default="text")
     args = parser.parse_args()
+    examples = []
     for example_id, contract in EXAMPLE_CONTRACTS.items():
-        check_drawio(EXAMPLE_DIR / f"{example_id}.drawio", contract["labels"])
+        counts = check_drawio(EXAMPLE_DIR / f"{example_id}.drawio", contract["labels"])
         check_svg(EXAMPLE_DIR / f"{example_id}.svg", contract["title"])
+        examples.append(
+            {
+                "id": example_id,
+                "title": contract["title"],
+                "diagramType": contract["diagramType"],
+                "drawio": f"{example_id}.drawio",
+                "svg": f"{example_id}.svg",
+                **counts,
+            }
+        )
     check_provenance()
     check_manifest()
     if args.format == "json":
-        print(json.dumps({"exampleCount": len(EXAMPLE_CONTRACTS), "schemaVersion": 1, "status": "passed"}, sort_keys=True))
+        print(
+            json.dumps(
+                {
+                    "exampleCount": len(EXAMPLE_CONTRACTS),
+                    "examples": examples,
+                    "schemaVersion": 1,
+                    "status": "passed",
+                },
+                sort_keys=True,
+            )
+        )
     else:
         print("Diagram examples check passed.")
 

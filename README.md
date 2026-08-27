@@ -78,7 +78,9 @@ python3 scripts/check_diagram_examples.py
 ```
 
 Use `python3 scripts/check_diagram_examples.py --format json` when CI needs a
-stable machine-readable success payload.
+stable machine-readable success payload. The payload includes one record per
+example with its id, type, source and preview names, and validated vertex and
+edge counts.
 
 The checker parses the `.drawio` XML and SVG preview, verifies expected labels,
 and scans for private paths, email addresses, source-platform traces, and common

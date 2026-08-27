@@ -35,6 +35,8 @@ python3 scripts/check_diagram_examples.py
 
 These checks validate the example `.drawio` source, SVG preview, provenance
 note, example manifest, skill metadata, and README references.
+For CI inventory, add `--format json`; each example record includes the
+validated Draw.io vertex and edge counts.
 
 The install commands only place files on disk. Installation does not edit
 runtime configuration, enable plugins, send data, or grant network access.
