@@ -115,6 +115,18 @@ if DIAGRAM_EXAMPLE_DIR="$TMP_DIR/examples" python3 "$ROOT_DIR/scripts/check_diag
   exit 1
 fi
 grep -q "privateData" "$TMP_DIR/bad-manifest.err"
+
+printf '[]\n' > "$TMP_DIR/examples/manifest.json"
+if DIAGRAM_EXAMPLE_DIR="$TMP_DIR/examples" python3 "$ROOT_DIR/scripts/check_diagram_examples.py" 2>"$TMP_DIR/non-object-manifest.err"; then
+  echo "checker should reject a non-object manifest" >&2
+  exit 1
+fi
+grep -q "manifest root must be an object" "$TMP_DIR/non-object-manifest.err"
+if grep -q "Traceback" "$TMP_DIR/non-object-manifest.err"; then
+  echo "checker should report malformed manifests without a traceback" >&2
+  exit 1
+fi
+
 python3 "$ROOT_DIR/tests/test_diagram_private_patterns.py"
 
 grep -q "research-method-flow.drawio" "$ROOT_DIR/skills/scientific-diagram-skill/SKILL.md"

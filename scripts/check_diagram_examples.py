@@ -177,6 +177,8 @@ def check_manifest() -> None:
     except json.JSONDecodeError as exc:
         fail(f"manifest JSON is not parseable: {exc}")
 
+    if not isinstance(manifest, dict):
+        fail("manifest root must be an object")
     if manifest.get("schemaVersion") != 1:
         fail("manifest schemaVersion must be 1")
     if manifest.get("exampleCount") != len(EXAMPLE_CONTRACTS):
@@ -184,6 +186,8 @@ def check_manifest() -> None:
     examples = manifest.get("examples")
     if not isinstance(examples, list) or len(examples) != len(EXAMPLE_CONTRACTS):
         fail(f"manifest must list exactly {len(EXAMPLE_CONTRACTS)} bundled examples")
+    if not all(isinstance(example, dict) for example in examples):
+        fail("manifest examples must be objects")
     by_id = {example.get("id"): example for example in examples}
     if set(by_id) != set(EXAMPLE_CONTRACTS):
         fail("manifest example ids do not match the bundled examples")
